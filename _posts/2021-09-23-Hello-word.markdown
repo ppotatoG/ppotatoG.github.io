@@ -2,7 +2,7 @@
 layout: post
 title:  "감자의 성장일기"
 date:   2021-09-23
-categories: jekyll update
+categories: daily
 ---
 
 안녕하세요 블로그 주인 입니다.

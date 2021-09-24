@@ -13,4 +13,4 @@ categories: jekyll update
 
 잘 부탁드려요 :)
 
-<a href="https://blog.naver.com/thgus2270/222478023939" target="_blank">네이버 블록그 소개글</a>
+<a href="https://blog.naver.com/thgus2270/222478023939" target="_blank">네이버 블로그 소개글</a>

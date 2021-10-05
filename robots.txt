@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://ppotatoG.github.io/sitemap.xml

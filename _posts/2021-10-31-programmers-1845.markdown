@@ -47,7 +47,7 @@ function solution(num) {
 두번째랑 이거랑 뭐가 더 나은진 잘 모르겠다
 
 ```js
-function solution1845(arr) {
+function solution(arr) {
     const answer = [...arr].filter((a, b) => [...arr].indexOf(a) === b).length;
     return answer < arr.length / 2 ? answer : arr.length / 2;
 }

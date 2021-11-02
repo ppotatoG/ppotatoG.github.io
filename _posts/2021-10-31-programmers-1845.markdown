@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Programmers 폰켓몬"
+title:  "폰켓몬"
 date:   2021-10-31
 categories: programmers
 ---

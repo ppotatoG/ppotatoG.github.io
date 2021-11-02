@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "문자열 내 P와 Y의 개수"
+date:   2021-11-02
+categories: programmers
+---
+[Programmers 문자열 내 P와 Y의 개수](https://programmers.co.kr/learn/courses/30/lessons/12916?language=javascript)
+
+### 처음 제출한 답
+
+`s`를 대문자로 변환해 잘라준 후,
+
+[recude](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)를 돌며 값을 추가
+
+객체를 만들어 준 후 값 반환
+
+```js
+function solution(s) {
+    let arr = s.toUpperCase().split("");
+
+    let reducer = (acc, cur) => {
+        if (!acc[cur]) acc[cur] = 1;
+        else acc[cur] = acc[cur] + 1;
+
+        return acc; 
+    };
+
+    let obj = arr.reduce(reducer, {});
+
+    if(obj.P === obj.y) console.log(obj.P, obj.Y);
+    else console.log(false)
+}
+```
+
+### 최근 보충 한 내용
+
+`srt`대문자로 변환
+
+각 `p`, `y` 배열을 만들어 `p`, `y`만 남게 필터링
+
+배열 길이 조건 반환
+
+```js
+function solution12916(str) {
+    str = str.toUpperCase();
+
+    const p = str.split('').filter((a) => a === 'P');
+    const y = str.split('').filter((a) => a === 'Y');    
+
+    return p.length === y.length;
+}
+```

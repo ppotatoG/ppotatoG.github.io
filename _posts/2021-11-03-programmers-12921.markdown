@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "소수 찾기"
+date:   2021-11-03
+categories: programmers
+---
+[Programmers 소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921?language=javascript)
+
+### 처음 제출한 답
+
+length 계산해서 담아줄 answer 선언
+
+num에 올 수 있는 모든 순자
+
+약수의 갯수를 확인해주기 위한 count
+
+배열 순회하며 약수 확인
+
+몫이 0일 때 count ++
+
+소수 == 약수의 갯수가 2개 answer ++
+
+```js
+function solution(num) {
+    let answer = 0; 
+
+    for(let item = 2; item < num + 1; item ++){ 
+        
+        let count = 0; 
+
+        for(let i = 2; i < item + 1; i ++){  
+            if(item % i == 0 ) count ++; 
+        }
+
+        if(count == 1) answer ++; 
+    }
+
+    return answer;
+}
+```
+
+### 두번째
+
+답은 맞는데, 런타임이 났던걸로 기억한다
+
+그러면서 찾아봤던 [에라토스테네스의 체](https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4)
+
+스트레스 받는것보단 답 외우는게 더 좋아서 [참고한 포스팅](https://velog.io/@ryong9rrr/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Lv1.-%EC%86%8C%EC%88%98-%EC%B0%BE%EA%B8%B0)
+```js
+function solution(num){
+    const nArr = new Array(num).fill(false)
+    nArr[0] = true;
+    for(let i = 2; i * i <= num; i++){
+        for(let k = i * i; k <= num; k += i){
+            nArr[k - 1] = true;
+        }
+    }
+    
+    return nArr.filter((cur) => cur === false).length;
+}
+```
+
+### 최근 보충 한 내용
+
+`arr` = 1을 제외한 배열, 2부터 시작
+
+`answer` = 1을 제외한 배열, 0으로 채워짐
+
+소수라면 `arr[i] % k === 0`를 했을 때 본인밖에 없으므로
+
+`answer`에 값이 1만 애들만 남겨서 길이 반환
+
+**아래 코드로 하면 런타임에러ㅋㅋㅠ**
+
+```js
+function solution12921(num) {
+    const arr = new Array(num - 1).fill(0).map((val, idx) => val = idx + 2);
+
+    let answer = new Array(num - 1).fill(0);
+
+    for(let i = 0; i < arr.length; i++){
+        for(let k = 2; k <= arr[i]; k++){
+            if(arr[i] % k === 0) answer[i] ++;
+        }
+    }
+
+    return answer.filter((val) => val === 1).length;
+}
+```
+
+소수찾기는 [에라토스테네스의 체](https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4)말고는 답이 없는것같다

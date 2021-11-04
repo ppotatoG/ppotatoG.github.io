@@ -1,0 +1,51 @@
+---
+layout: post
+title:  "수박수박수박수박수박수?"
+date:   2021-11-04
+categories: programmers
+---
+[Programmers 수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922?language=javascript)
+
+### 처음 제출한 답
+
+`'수박'` 이라는 문자열을 만들어준 후
+
+중복문 내에서 `num/2`만큼 반복 해준다
+
+반환할 때 num이 홀수였다면 문자열 뒤에서 하나를 빼고 반환
+```js
+function solution(num) {
+    let subak = '수박';
+
+    for(let i = 1; i < (num / 2) ; i++){
+        subak += '수박';
+    }
+
+    return num % 2 == 0 ? subak : subak.split(0, -1) ;
+}
+```
+
+### 두번째
+
+[repeat](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)으로 수박을 반복
+
+'수박이' 두글자이기 때문에 n번이 아닌 n * 2로 반복된다
+
+[slice](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)로 첫 글자부터 n번째 글자까지 잘라서 반환
+```js
+function solution(n) {
+    return "수박".repeat(n).slice(0,n);
+}
+```
+
+### 최근 보충 한 내용
+
+num값이 홀수일 수 있으니 반올림해서 반복 후,
+
+[substr](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/substr)으로 잘라주기
+
+```js
+function solution(num) {
+    return '수박'.repeat(Math.round(num / 2)).substr(0, num);
+}
+```

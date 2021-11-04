@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "시저암호"
+date:   2021-11-04
+categories: programmers
+---
+[Programmers 시저암호](https://programmers.co.kr/learn/courses/30/lessons/12926?language=javascript)
+
+꽤 오래동안 풀던 문제라.. [TIL](https://github.com/ppotatoG/TIL/tree/master/programmers/12926)내에서 보면 흥미롭다ㅋㅋ
+
+### 처음 제출한 답
+
+`s`를 잘라 배열 값을 돌면서 값에 따라 `index`에 붙여주기!
+```js
+function solution(s, n){
+    let index;
+
+    return s.split('').map((value) => {
+        if(value === String.fromCharCode(32)) return String.fromCharCode(32)
+        else if(value === value.toUpperCase()){
+            index = value.charCodeAt() + n;
+            return index > 90 ? value = String.fromCharCode(index - 26) :  value = String.fromCharCode(index);
+        } else if(value === value.toLowerCase()) {
+            index = value.charCodeAt() + n;
+            return index > 122 ? value = String.fromCharCode(index - 26) :  value = String.fromCharCode(index);
+        }
+    }).join('');
+}
+```
+
+### 최근 보충 한 내용
+
+예전 답과 크게 다른 부분은... 배열값을 아스키코드 값으로 바꿔놓은 부분
+
+개인적으로 `map`내에서 `num`값을 선언해 가독성이 더 좋다..!
+```js
+function solution(str, n) {
+    let arr = str.split('').map((val) => val = Number(val.charCodeAt()));
+
+    return arr.map((val) => {
+        let num = val + n;
+        if(val === 32) return String.fromCharCode(32);
+
+        if(val > 90) {
+            if(num >= 123) num -= 26;
+            return String.fromCharCode(num);
+        }
+        else {
+            if(num >= 91) num -= 26;
+            return String.fromCharCode(num);
+
+        }
+    }).join('');
+}
+```
+이 문제에 가장 중요한 점은 **`z`, `Z`일 때 값을 어떻게 반환하느냐**
+
+솔직히 아 이거는 이거니까 대충 이렇게 하면 되겠다! 로는 못했고,
+
+대충 가다만 잡은다음에 값 열심히 바꿔서 하니까 됐다ㅠㅠ
+
+아래 값으로 테스트 해서 제대로 나오면 아마 다 맞을거다!
+```js
+console.log(solution('yz', 1)); // za
+console.log(solution('z', 2)); // b
+console.log(solution('Aa Z z', 2)); // Cc B b
+```

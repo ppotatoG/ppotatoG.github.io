@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "자릿수 더하기"
+date:   2021-11-13
+categories: programmers
+---
+[Programmers 자릿수 더하기](https://programmers.co.kr/learn/courses/30/lessons/12931?language=javascript)
+
+### 제출한 답
+
+`n`을 문자열로 바꿔준 후 자르기
+
+[reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)로 값을 숫자로 바꿔준 후 더하기
+```js
+function solution(n) {
+    return n.toString().split("").reduce((a, b) => Number(a) + Number(b));
+}
+```

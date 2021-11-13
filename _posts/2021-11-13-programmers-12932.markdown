@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "자연수 뒤집어 배열로 만들기"
+date:   2021-11-13
+categories: programmers
+---
+[Programmers 자연수 뒤집어 배열로 만들기](https://programmers.co.kr/learn/courses/30/lessons/12932?language=javascript)
+
+### 제출한 답
+
+`n`을 문자열로 바꿔준 후 잘라 값을 숫자로 바꿔주고 [reverse](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)로 뒤집기
+
+[reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)로 값을 숫자로 바꿔준 후 더하기
+```js
+function solution(num) {
+    return String(num).split('').map((num) => Number(num)).reverse();
+}
+```

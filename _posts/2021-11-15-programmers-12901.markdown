@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "2016년"
+date:   2021-11-15
+categories: programmers
+---
+[Programmers 2016년](https://programmers.co.kr/learn/courses/30/lessons/12901?language=javascript)
+
+### 처음 제출한 답
+
+`date`에 `month`를 월 -1 한 만큼 모두 더해주고 일을 더해준다
+
+금요일 시작이니 -4를 하고 몫에 따라 요일 반환
+
+```js
+function solution(a, b) {
+    const month = [31, 29 ,31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const date = month.slice(0, a - 1).reduce((a, b) => a + b) + b;
+
+    if((date - 4) % 7 === 0) return 'MON';
+    if((date - 4) % 7 === 1) return 'TUE';
+    if((date - 4) % 7 === 2) return 'WED';
+    if((date - 4) % 7 === 3) return 'THU';
+    if((date - 4) % 7 === 4) return 'FRI';
+    if((date - 4) % 7 === 5) return 'SAT';
+    if((date - 4) % 7 === 6) return 'SUN';
+}
+```
+
+### 두번째 제출한 답
+
+조건문이 너무 많은게 문제인가.. reduce가 문제인지 몰라 다른 방법으로 해봤지만
+
+이 방법도 테케 1, 2에서 에러
+
+```js
+function solution(a, b) {
+    const month = [31, 29 ,31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const arr = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+
+    let date = 0;
+
+    for(let i = 0; i < a - 1; i++){
+        date += month[i];
+    }
+
+    return arr[(date + b - 4) % 7];
+}
+```
+
+### 포기
+
+어떻게 해도 안되길래 깔끔하게 포기-!
+```js
+function solution(a, b) {
+    const month = [31, 29 ,31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const arr = ['THU', 'FRI', 'SAT', 'SUN', 'MON', 'TUE', 'WED'];
+    const date = month.slice(0, a - 1).reduce((a, b) => a + b);
+
+    return arr[(date + b) % 7];
+}
+```

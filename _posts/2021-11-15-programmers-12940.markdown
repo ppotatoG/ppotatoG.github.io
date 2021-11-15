@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "최대공약수와 최소공배수"
+date:   2021-11-15
+categories: programmers
+---
+[Programmers 최대공약수와 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12940?language=javascript)
+
+### 제출한 답
+
+유클리드 호제법이 아닌 다른 방법으로 풀면, 런타임에러가 난다ㅜㅜ
+```js
+function solution(a, b) {
+    const gcd = (a, b) => a % b === 0 ? b : gcd(b, a % b);
+    return [gcd(a, b), a * b / gcd(a, b)];
+}
+```
+
+[유클리드 호제법](https://myjamong.tistory.com/138)
+[참고 포스팅](https://swess.tistory.com/13)

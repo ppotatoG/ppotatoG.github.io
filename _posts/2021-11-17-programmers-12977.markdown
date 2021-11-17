@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "소수 만들기"
+date:   2021-11-17
+categories: programmers
+---
+[Programmers 소수 만들기](https://programmers.co.kr/learn/courses/30/lessons/12977?language=javascript)
+
+### 제출한 답
+
+`num`내의 숫자 세개를 더해야 하기 때문에 중복문을 세개 만들어준다
+
+빈 배열 `arr`를 만들어 세 숫자를 더한 값을 넣어준다
+
+`arr`와 같은 길이를 갖고 있는 `answer`을 만들고 0을 채워준다
+
+1은 소수가 아니기때문에 1부터 시작해 `arr`의 값 만큼의 중복문을 만들어준 후
+
+arr[i]가 k로 나뉘는 값이 있는지 확인하고 `answer[i]`에 1을 더해준다
+
+소수면 총 k가 2이기 때문에 [filter](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)로 확인 후 길이를 반환한다
+```js
+function solution(num) {
+    let arr = [];
+
+    for(let i = 0; i < num.length; i++){
+        for(let k = i + 1; k < num.length; k++){
+            for(let j = k + 1; j < num.length; j++){
+                arr.push(num[i] + num[k] + num[j])
+            }
+        }
+    }
+
+    let answer = new Array(arr.length).fill(0);
+
+    for(let i = 0; i < answer.length; i++){
+        for(let k = 1; k <= arr[i]; k++){
+            if(arr[i] % k === 0) answer[i] ++; 
+        }
+    }
+
+    return answer.filter((val) => val === 2).length;
+}
+```

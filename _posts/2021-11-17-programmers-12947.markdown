@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "하샤드 수"
+date:   2021-11-17
+categories: programmers
+---
+[Programmers 하샤드 수](https://programmers.co.kr/learn/courses/30/lessons/12947?language=javascript)
+
+### 처음 제출한 답
+
+빈 배열 `arr`
+
+`arr`에 `num`을 문자열로 바꿔준 후 잘라서 담기
+
+`num` % `arr`를 합친 값으로 나눴을 때 0이 되는지 확인
+```js
+function solution(num){
+    let arr = [];    
+    arr = num.toString().split("");
+
+    return num % arr.reduce((a, b) => Number(a) + Number(b)) == 0;
+}
+```
+
+### 최근 보충한 답
+
+`n`을 문자열로 변환, 배열로 만들어준 후 모든 값을 더한 `sum` 선언
+
+`n` % `sum`의 몫이 0인지 확인 
+```js
+function solution(n) {
+    const sum = 
+    (n+'')
+    .split('')
+    .reduce((a, b) => Number(a) + Number(b));
+
+    return n % sum === 0;
+}
+```

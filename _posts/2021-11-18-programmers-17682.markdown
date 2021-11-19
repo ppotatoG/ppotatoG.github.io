@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "1차] 다트 게임"
+title:  "[1차] 다트 게임"
 date:   2021-11-18
 categories: programmers
 ---
-[Programmers 1차] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682?language=javascript)
+[Programmers [1차] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682?language=javascript)
 
 ### 제출한 답
 

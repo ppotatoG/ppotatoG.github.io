@@ -1,0 +1,43 @@
+---
+layout: post
+title:  "실패율"
+date:   2021-11-23
+categories: programmers
+---
+[실패율](https://programmers.co.kr/learn/courses/30/lessons/42889?language=javascript)
+
+### 제출한 답
+
+```js
+function solution(n, stages) {
+    let user = stages.length; // 받아오는 stages길이가 유저 수
+    let arr = new Array(n).fill(0).map((val, idx) => {
+        // 최고 스테이지 수만큼 길이의 배열에 0을 채운 후 map으로 돌기
+
+        let tmp1 = val = idx + 1;
+        // 현재 스테이지를 tmp1에 담음
+
+        let tmp2 = stages.filter((val) => val == tmp1).length;
+        // stages내에 현재 스테이지를 클리어 한 유저의 수
+
+        user -= tmp2;
+        // 전제 유저 - 현재 스테이지를 클리어 한 유저
+
+        tmp2 /= user;
+        // 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
+
+        return [tmp1, tmp2]
+        // [스테이지, 실패율]
+    });
+    
+    // 실패율로 정렬
+    arr.sort((a, b) => {
+        if (a[1] < b[1]) return 1
+        else if (a[1] > b[1]) return -1
+        else return 0
+    })
+    
+    // 스테이지 반환
+    return arr.map((val) => val[0]);
+}
+```

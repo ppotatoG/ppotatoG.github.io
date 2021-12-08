@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "신규 아이디 추천"
+date:   2021-12-08
+categories: programmers
+---
+
+[신규 아이디 추천](https://programmers.co.kr/learn/courses/30/lessons/72410?language=javascript)
+
+```
+1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
+2단계 new_id에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
+3단계 new_id에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환합니다.
+4단계 new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
+5단계 new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
+6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
+     만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
+7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
+```
+
+### 제출한 답
+
+1. [map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)으로 값을 돌며 [toLowerCase](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)를 사용해 소문자로 치환
+
+2. 사용 가능한 문자열을 담은 배열 `filterStrings`를 생성해 [filter](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [some](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some),  [includes](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)로 사용 불가능한 문자 제거
+
+3. [replace](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)로 두개 이상의 마침표를 하나의 마침표로 치환
+
+4. [split](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split)사용으로 문자열의 처음 또는 끝에 마침표가 있다면 [slice](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/slice)를 사용해 제거
+
+5. `answer`이 빈 문자열이라면 'a'대입 
+
+6. [split](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split)와 [slice](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/slice)를 사용해 16자 이상이면 제거, 제거 후 마침표가 끝에 위치한다면 마침표도 제거
+
+7. `answer`의 길이가 2자 이하일 때 `answer`의 길이가 3이 될 때까지 마지막 문자를 while을 사용해 붙이기
+
+```js
+function solution(str) {
+    const filterStrings = ['-', '_', '.', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    
+    let answer = str.split('')
+    // 1단계 
+    .map((val) => val.toLowerCase())
+
+    // 2단계
+    .filter(val => filterStrings.some(v => val.includes(v)))
+    .join('')
+
+    // 3단계
+    .replace(/\.{2,}/g, '.');
+
+    // 4단계 
+    if(answer.split('')[0] === '.') answer = answer.slice(1);
+    if(answer.split('')[answer.length - 1] === '.') answer = answer.slice(0, -1);
+
+    // 5단계 
+    if(answer.length === 0) answer = 'a';
+
+    // 6단계
+    if(answer.length > 15) {
+        answer = answer.slice(0, 15)
+        if(answer.split('')[answer.length - 1] === '.') answer = answer.slice(0, -1);
+    }
+
+    // 7단계
+    while(answer.length < 3) answer += answer.slice(-1)
+
+    return answer;
+}
+```

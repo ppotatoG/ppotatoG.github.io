@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "음양 더하기"
+date:   2022-01-08
+categories: programmers
+---
+
+[음양 더하기](https://programmers.co.kr/learn/courses/30/lessons/76501?language=javascript)
+
+### 처음 제출한 답
+
+`a`를 돌며 bool값을 판단해서 원본배열의 값을 바꿔줌
+
+중복문 밖에서 [reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)로 모든 값 더해주기
+```js
+function solution(a, s) {
+    for(let i = 0; i < a.length; i++){
+        if(s[i] === false) a[i] *= -1; 
+    }
+
+    return a.reduce((a, b) => a + b);
+}
+```
+
+### 두번째 
+
+위에서 사용한 중복문 부분을 [map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)으로 변경
+```js
+function solution(a, s) {
+    return a.map((c, i) => s[i] === false? a[i] *= -1 : a[i]).reduce((a, b) => a + b);
+}
+```
+
+### 마지막
+
+[reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)로 한번에 해결
+
+reduce안에서 `, 0)`부분이 포인트다
+```js
+function solution(absolutes, signs) {
+    return absolutes.reduce((acc, val, i) => acc + (val * (signs[i] ? 1 : -1)), 0);
+}
+```
+
+### 최근 보충한 내용
+
+마지막이랑 비슷하지만 조건이 전체로 들어가 있음
+
+bool값은 `0`, `1`로 판단할 수 있지만 그냥 `!`로도 가능
+```js
+function solution(a, s) {
+    return a.reduce((a, b, i) => !s[i] ? a + (b * -1) : a + b, 0);
+}
+```

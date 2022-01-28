@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "숫자 문자열과 영단어"
+date:   2022-01-08
+categories: programmers
+---
+
+[숫자 문자열과 영단어](https://programmers.co.kr/learn/courses/30/lessons/81301?language=javascript)
+
+### 제출한 답
+
+`s`의 값을 [replace](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)로 바꿔주면서 [Number](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number)를 사용해 숫자형으로 형변환
+```js
+function solution(s) {
+    return Number(
+        s
+        .replace(/zero/g, 0)
+        .replace(/one/g, 1)
+        .replace(/two/g, 2)
+        .replace(/three/g, 3)
+        .replace(/four/g, 4)
+        .replace(/five/g, 5)
+        .replace(/six/g, 6)
+        .replace(/seven/g, 7)
+        .replace(/eight/g, 8)
+        .replace(/nine/g, 9)
+    );
+}
+```

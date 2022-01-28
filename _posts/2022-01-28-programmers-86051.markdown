@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "없는 숫자 더하기"
+date:   2022-01-28
+categories: programmers
+---
+
+[없는 숫자 더하기](https://programmers.co.kr/learn/courses/30/lessons/86051?language=javascript)
+
+### 제출한 답
+
+0부터 10까지 돌며, `num의 i`번째와 `i`이 같은 값이 아닐 때,
+
+`num`, 과 새로 만든 배열 `newArr`에 값 추가
+
+`newArr`를 모두 더한 값 반환
+
+```js
+function solution(num) {
+    let newArr = [];
+    for(let i = 0; i < 10; i++){
+        if(i !== num.sort()[i]){
+            num.push(i)
+            newArr.push(i);
+        }
+    }
+    return newArr.reduce((a, b) => a + b);
+}
+```

@@ -8,7 +8,7 @@ categories: programmers
 
 [없는 숫자 더하기](https://programmers.co.kr/learn/courses/30/lessons/86051?language=javascript)
 
-### 제출한 답
+### 제출한 답 
 
 0부터 10까지 돌며, `num의 i`번째와 `i`이 같은 값이 아닐 때,
 

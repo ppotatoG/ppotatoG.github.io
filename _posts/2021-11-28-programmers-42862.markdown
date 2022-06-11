@@ -8,7 +8,7 @@ categories: programmers
 
 ### 처음 제출한 답
 
-처음 제출하고 정확도 30%라 기분 좋았다 
+처음 제출하고 정확도 30%라 기분 좋았다
 
 ```js
 function solution(n, lost, reserve) {

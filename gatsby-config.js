@@ -3,14 +3,15 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+const metaConfig = require("./site-meta-config")
 
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Koop`,
-    titleTemplate: `%s | A simple MDX blog`,
+    title: `kamja`,
+    titleTemplate: `kamja’s growth diary`,
     description: `Built using GatsbyJS and serving content using markdown`,
-    siteUrl: `https://koop-blog.netlify.app`, // Cannot include a trailing slash
+    siteUrl: `https://ppotatoG.github.io`, // Cannot include a trailing slash
     image: `/images/macbook.jpg`,
     siteAuthor: `Morgan Baker`,
     siteAuthorUrl: `https://www.morganbaker.dev`,

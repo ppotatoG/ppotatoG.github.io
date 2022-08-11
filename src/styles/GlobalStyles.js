@@ -4,9 +4,9 @@ import "normalize.css"
 const GlobalStyles = createGlobalStyle`
 :root {
   font-size: 16px;
-  --dark: #2b2b2b;
+  --dark: #222;
   --grey: #7c7c7c;
-  --highlight: #0075FF;
+  --highlight: #fa7481;
 }
 
 * {
@@ -60,7 +60,7 @@ body {
   }
 
 main {
-  max-width: 800px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 30px 30px 0 30px;

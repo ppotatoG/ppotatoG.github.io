@@ -37,7 +37,6 @@ const PostTemplate = ({ data }) => {
           <span>Written by {author}</span> & Posted on <span>{date}</span>
         </h2>
 
-        <GatsbyImage image={img} alt="Blog Post" />
         <div className="post__body">
           <MDXRenderer>{body}</MDXRenderer>
         </div>

@@ -3,12 +3,11 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-const metaConfig = require("./site-meta-config")
 
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `kamja`,
+    title: `ppotatoG`,
     titleTemplate: `kamja’s growth diary`,
     description: `Built using GatsbyJS and serving content using markdown`,
     siteUrl: `https://ppotatoG.github.io`, // Cannot include a trailing slash

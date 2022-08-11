@@ -19,12 +19,12 @@ const Card = styled.article`
     color: var(--dark);
   }
   .card-image {
-    height: 450px;
+    height: 200px;
     transition: transform 0.35s;
   }
 
   @media (min-width: 600px) {
-    flex: 0 0 46%;
+    flex: 0 0 24%;
   }
 `
 
@@ -49,11 +49,8 @@ const PostCard = ({ post }) => {
         <Link to={slug}>
           <GatsbyImage image={img} className="card-image" />
           <h2>{title}</h2>
-          <p>{post.excerpt}</p>
           <Meta>
-            <h4>Written by {author}</h4>
-            <h4>Posted on {date}</h4>
-            <div className="btn">Read Article</div>
+            <h4>{date}</h4>
           </Meta>
         </Link>
       </Anim>

@@ -26,6 +26,14 @@ const Card = styled.article`
   @media (min-width: 600px) {
     flex: 0 0 24%;
   }
+  
+  h2 {
+    max-width: 270px;
+    padding:0 5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
 `
 
 const Meta = styled.div`

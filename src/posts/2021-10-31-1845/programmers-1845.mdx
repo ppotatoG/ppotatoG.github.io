@@ -1,0 +1,55 @@
+---
+title:  "programmers 폰켓몬"
+slug: programmers-1845
+image: ./images/thumbnail.jpg
+date:   2021-10-31
+author: ppotatoG
+---
+[Programmers 폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845?language=javascript)
+
+문제 읽으면서 이해하는게 좀 어려웠던걸로 기억한다
+
+- 최대 `arr/2` 만 가져갈 수 있음
+- 최대한 다양한 종류를 가져가야 함
+
+
+### 처음 제출한 답
+
+`arr`에서 num을 중복제거 하고,
+
+`while`로 돌면서 값을 삭제했다
+```js
+function solution(num) {
+    let arr = num.filter((a, b) => num.indexOf(a) === b);
+    while(arr.length > num.length/2) arr.pop();
+
+    return arr.length;
+}
+```
+
+### 두번째
+
+두번째는 아마 다른사람의 풀이를 보고 했으려나?
+
+중복제거는 그대로, return에서 조건을 줬다
+```js
+function solution(num) {
+    const arr = num.filter((a, b) => num.indexOf(a) === b);
+    return arr.length > num.length / 2 ? num.length / 2 : arr.length;
+}
+```
+
+### 최근 보충 한 내용
+
+`answer`을 복사해 중복제거 후 길이 반환
+
+반환값에서 조건
+
+두번째랑 이거랑 뭐가 더 나은진 잘 모르겠다
+
+```js
+function solution(arr) {
+    const answer = [...arr].filter((a, b) => [...arr].indexOf(a) === b).length;
+    return answer < arr.length / 2 ? answer : arr.length / 2;
+}
+```

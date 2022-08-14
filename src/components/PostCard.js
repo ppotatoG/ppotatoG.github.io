@@ -5,9 +5,6 @@ import styled from "styled-components"
 import Anim from "./Anim"
 
 const Card = styled.article`
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-
   &:hover {
     .card-image {
       transform: scale(1.025);
@@ -21,10 +18,6 @@ const Card = styled.article`
   .card-image {
     height: 200px;
     transition: transform 0.35s;
-  }
-
-  @media (min-width: 600px) {
-    flex: 0 0 24%;
   }
   
   h2 {

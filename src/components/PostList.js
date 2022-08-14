@@ -4,9 +4,9 @@ import styled from "styled-components"
 
 const List = styled.div`
   @media (min-width: 600px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 `
 

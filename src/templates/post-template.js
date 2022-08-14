@@ -16,6 +16,20 @@ const PostTemplateStyles = styled.section`
   .post__body {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
+    code {
+      color: var(--dark);
+      font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
+      background: #f1f1f1;
+      padding: 2px;
+    }
+    pre {
+      color: var(--dark);
+      font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
+      background: #f1f1f1;
+      padding: 15px;
+      code {
+        padding: 0;
+      }
   }
 `
 

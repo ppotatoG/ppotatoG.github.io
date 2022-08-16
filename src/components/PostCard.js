@@ -1,8 +1,8 @@
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Anim from "./Anim"
+import Thumbnail from "./Thumbnail";
 
 const Card = styled.article`
   &:hover {
@@ -40,15 +40,13 @@ const Meta = styled.div`
 `
 
 const PostCard = ({ post }) => {
-  const { title, date, author, slug } = post.frontmatter
-
-  const img = post.frontmatter.image.childImageSharp.gatsbyImageData
+  const { title, date, slug } = post.frontmatter
 
   return (
     <Card>
       <Anim>
         <Link to={slug}>
-          <GatsbyImage image={img} className="card-image" alt="thumbnail"/>
+          <Thumbnail posts={post}/>
           <h2>{title}</h2>
           <Meta>
             <h4>{date}</h4>

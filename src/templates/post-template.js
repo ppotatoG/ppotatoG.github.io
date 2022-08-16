@@ -72,6 +72,7 @@ export const query = graphql`
         slug
         date(formatString: "MMMM Do, YYYY")
         author
+        thumbnail
         image {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
@@ -90,4 +91,5 @@ PostTemplate.propTypes = {
   date: PropTypes.string,
   author: PropTypes.string,
   image: PropTypes.object,
+  thumbnail: PropTypes.string
 }

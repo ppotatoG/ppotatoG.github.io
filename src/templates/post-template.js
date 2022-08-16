@@ -36,7 +36,6 @@ const PostTemplateStyles = styled.section`
 const PostTemplate = ({ data }) => {
   const { title, date, author, image } = data.mdx.frontmatter
   const { body } = data.mdx
-  const img = getImage(image.childImageSharp.gatsbyImageData)
 
   return (
     <Layout>
@@ -72,7 +71,7 @@ export const query = graphql`
         slug
         date(formatString: "MMMM Do, YYYY")
         author
-        thumbnail
+        thumbnailType
         image {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
@@ -91,5 +90,5 @@ PostTemplate.propTypes = {
   date: PropTypes.string,
   author: PropTypes.string,
   image: PropTypes.object,
-  thumbnail: PropTypes.string
+  thumbnailType: PropTypes.string
 }

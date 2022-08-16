@@ -14,6 +14,7 @@ const getPosts = graphql`
             slug
             date(formatString: "MMMM Do, YYYY")
             author
+            thumbnailType
             image {
               childImageSharp {
                 gatsbyImageData(

@@ -3,8 +3,9 @@ import {GatsbyImage} from "gatsby-plugin-image";
 
 const Thumbnail = ({posts}) => {
     const img = posts.frontmatter.image;
+
     if(!img) {
-        console.log(posts.frontmatter)
+        console.log(posts)
     }
 
     return (

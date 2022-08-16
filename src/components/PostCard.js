@@ -48,7 +48,7 @@ const PostCard = ({ post }) => {
     <Card>
       <Anim>
         <Link to={slug}>
-          <GatsbyImage image={img} className="card-image" />
+          <GatsbyImage image={img} className="card-image" alt="thumbnail"/>
           <h2>{title}</h2>
           <Meta>
             <h4>{date}</h4>

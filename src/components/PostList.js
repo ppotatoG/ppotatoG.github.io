@@ -5,8 +5,8 @@ import styled from "styled-components"
 const List = styled.div`
   @media (min-width: 600px) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 10px;
     article {
         width: 100%;
     }

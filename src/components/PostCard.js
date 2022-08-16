@@ -21,8 +21,6 @@ const Card = styled.article`
   }
   
   h2 {
-    max-width: 270px;
-    padding:0 5px;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;

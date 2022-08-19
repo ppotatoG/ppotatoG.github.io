@@ -1,0 +1,17 @@
+---
+title:  "평균 구하기"
+date:   2021-11-13
+slug: programmers-12944
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers 평균 구하기](https://programmers.co.kr/learn/courses/30/lessons/12944?language=javascript)
+
+### 제출한 답
+
+[reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)로 모든 값을 더한 후 `num`의 길이로 나눠주기
+```js
+function solution(num){
+    return num.reduce((a, b) => a + b)/num.length;
+}
+```

@@ -1,0 +1,28 @@
+---
+title:  "핸드폰 번호 가리기"
+date:   2021-11-17
+slug: programmers-12948
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers 핸드폰 번호 가리기](https://programmers.co.kr/learn/courses/30/lessons/12948?language=javascript)
+
+### 처음 제출한 답
+
+`s`길이 -4 만큼 '*'를 [repeat](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)을 사용하여 반복
+
+위에 '*'에 `s`의 뒤에서 네자리 를 합쳐주기
+```js
+function solution(s) {
+    return '*'.repeat(s.length - 4) + s.substring(s.length, s.length - 4);
+}
+```
+
+### 최근 보충한 답
+
+처음과 비슷하지만, [substring](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/substring)대신 [slice](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/slice)를 사용했다
+```js
+function solution(phone) {
+    return ('*').repeat(phone.length - 4) + phone.slice(-4);
+}
+```

@@ -1,0 +1,39 @@
+---
+title:  "x만큼 간격이 있는 n개의 숫자"
+date:   2021-11-17
+slug: programmers-12954
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers x만큼 간격이 있는 n개의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12954?language=javascript)
+
+### 처음 제출한 답
+
+빈 배열 `answer`을 만들어 `x`로 시작해 `n`번 반복하는 중복문
+
+`answer`에 `x * i`를 넣어준다
+```js
+function solution(x, n){
+    const answer = [];
+
+    for(let i = 1; i <= n; i++){
+        answer.push(x * i);
+    }
+
+    console.log(answer)
+}
+```
+
+### 최근 보충한 답
+
+[new Array()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Array)로 `n`과 같은 배열을 선언
+
+[fill](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)로 `new Array`에 `x`를 넣어주고
+
+[map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)으로 `index` + 1인 값을 곱해준다
+
+```js
+function solution(x, n) {
+   return new Array(n).fill(x).map((val, idx) => val *= idx + 1);
+}
+```

@@ -1,0 +1,78 @@
+---
+title:  "예산"
+date:   2021-11-18
+slug: programmers-12982
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers 예산](https://programmers.co.kr/learn/courses/30/lessons/12982?language=javascript)
+
+### 처음 제출한 답
+
+`sum`이 `budget`보다 작으면,
+
+`sum`에 `d[i]`를 더해준다
+
+일단 `sort`부분이 잘못됐고, 고쳐도 테케 중 두개를 통과하지 못한다
+
+```js
+function solution(d, budget){
+    d.sort();
+
+    let i = 0;
+    let sum = 0;
+
+    while(sum < budget) {
+        i++;
+        sum += d[i];
+    }
+
+    return i;
+}
+
+```
+
+### 두번째
+
+이번에는 제대로 정렬
+
+`d.length`로 중복을 돌며
+
+`sum`에 `d[i]`를 더해주고, `count ++`
+
+전부 더한값이 `budget`보다 크면 `count --`해주고, `break`
+
+```js
+function solution(d, budget){
+    d.sort((a, b) => a - b);
+
+    let count = 0;
+    let sum = 0;
+
+    for(let i = 0; i < d.length; i ++){
+        sum += d[i];
+        count ++;
+        if(sum > budget) {
+            count --;
+            break;
+        }
+    }
+
+    return count;
+}
+```
+
+### 다른 사람의 풀이
+
+`d`를 모두 더한 값이 `budget`보다 작을 떄까지 [pop](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
+
+`d.length`로 지원 가능한 부서의 길이 반환
+
+```js
+function solution(d, budget){
+    d.sort((a, b) => a - b);
+    while (d.reduce((a, b) => (a + b), 0) > budget) d.pop();
+
+    return d.length;
+}
+```

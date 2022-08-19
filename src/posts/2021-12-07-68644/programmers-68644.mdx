@@ -1,0 +1,63 @@
+---
+title:  "연습 두 개 뽑아서 더하기"
+date:   2021-12-07
+slug: programmers-68644
+thumbnailType: programmers
+author: ppotatoG
+---
+
+[연습 두 개 뽑아서 더하기](https://programmers.co.kr/learn/courses/30/lessons/68644?language=javascript)
+
+### 처음 제출한 답
+
+답을 담아줄 배열 `newArr`
+
+배열 내 다른 인덱스에 있는 두개의 수를 더해야 하니 중첩 중복문을 만들어준다
+
+바깥 중복문 `i`에서는 `0부터 시작`해서 `arr.length - 1`
+
+안쪽 중복문 `k`는 `1부터 시작`해서 `arr.length`
+
+그렇게 arr[i] + arr[j] 더한 값을 모두 `newArr`에 담아준다
+
+정렬 및, 중복제거를 하고 반환!
+
+```js
+function solution(arr) {
+    const newArr = [];
+
+    for (let i = 0; i < arr.length - 1 ; i++) {
+        for(let j = i + 1; j < arr.length ; j++){
+            newArr.push(
+                arr[i] + arr[j]
+            )
+        }
+    }
+
+    newArr.sort((a, b) => a == b ? 0 : a > b ? 1: -1 );
+
+    const answer = newArr.filter((a, b) => newArr.indexOf(a) === b);
+
+    return answer;
+}
+```
+
+### 최근 보충한 답
+
+사실 보충이랄것도 없고, Set으로 중복제거하는걸 별로 좋아하진 않지만.. 그래도 줄여보자면...
+
+중복은 동일하게 돌리고, 중복제거와 정렬 부분에서 한번에 해버리기!
+
+```js
+function solution(arr) {
+    const newArr = [];
+
+    for (let i = 0; i < arr.length -1 ; i++) {
+        for(let j = i + 1; j < arr.length ; j++){
+            newArr.push(arr[i] + arr[j]);
+        }
+    }
+
+    return [...new Set(newArr.sort((a, b) => a - b))];
+}
+```

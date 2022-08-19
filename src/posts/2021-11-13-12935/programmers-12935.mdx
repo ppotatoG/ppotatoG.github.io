@@ -1,0 +1,57 @@
+---
+title:  "제일 작은 수 제거하기"
+date:   2021-11-13
+slug: programmers-12935
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers 제일 작은 수 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12935?language=javascript)
+
+### 처음 제출한 답
+
+`min`으로 `num`의 가장 작은 값 선언...
+
+중복문 돌며 배열 내 `min`값 제거
+
+`-1`에 대한 내용이 두번 들어있는 것 같지만.. 어떻게 통과는 된다
+
+```js
+function solution(num) {
+    let min = Math.min(...num);
+
+    if(num[0] == num[1]) num = [-1];
+
+    for(let i = 0; i < num.length; i++){
+        if(num[i] == min) num.splice(i, 1)
+    }
+
+    if(num.length == 0) num.push(-1);
+    return num;
+}
+```
+
+### 두번째
+
+똑같이 `min`선언 후 [indexOf](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)를 사용해 배열을 잘라준다
+
+`num`의 길이로 값 반환
+
+```js
+function solution(num) {
+    let min = Math.min(...num);
+    num.splice(num.indexOf(min), 1);
+    return num.length == 0? [-1] : num;
+}
+```
+
+### 최근 제출한 답
+
+return에서 `arr`길이 먼저 확인
+
+[filter](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)로 `arr`내에 가장 작은 값 제거
+
+```js
+function solution12935(arr) {
+    return arr.length === 1 ? [-1] : arr.filter((val) => val !== Math.min.apply(null, arr));
+}
+```

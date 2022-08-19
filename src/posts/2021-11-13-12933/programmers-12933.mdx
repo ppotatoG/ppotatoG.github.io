@@ -1,0 +1,44 @@
+---
+title:  "정수 내림차순으로 배치하기"
+date:   2021-11-13
+slug: programmers-12933
+thumbnailType: programmers
+author: ppotatoG
+---
+[Programmers 정수 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12933?language=javascript)
+
+### 처음 제출한 답
+
+`n`을 문자열로 바꿔준 후 잘라 `arr`에 담아주기
+
+[sort](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).... 는 아직도 솔직히 어렵고 힘들다
+
+`arr`를 정렬 후 합쳐 숫자로 바꿔준 값을 반환
+```js
+function solution(num) {
+    const arr = String(num).split('');
+
+    arr.sort((a, b) => {
+        if(a > b) return -1;
+        else if(a < b) return 1;
+        else return 0;
+    });
+    return Number(arr.join(''));
+}
+```
+
+### 최근 보충 한 내용
+
+`n`잘라서 정렬 후 뒤집어서 합친걸 숫자로 반환
+
+```js
+function solution12933(n) {
+    return Number((n+'').split('').sort().reverse().join(''));
+}
+```
+
+`sort`에서, 값을 지정해주지 않고 `sort()`로 사용하면
+
+`[1, 2, 3, 112, 114].sort()`를 `[1, 112, 114, 2, 3]`로 반환한다
+
+예제에서는 각 자릿수를 정렬, 한자리수의 값만 정렬하기 때문에 `sort()`로만 사용해도 된다

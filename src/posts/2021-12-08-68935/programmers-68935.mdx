@@ -1,0 +1,31 @@
+---
+title:  "3진법 뒤집기"
+date:   2021-12-08
+slug: programmers-68935
+thumbnailType: programmers
+author: ppotatoG
+---
+
+[3진법 뒤집기](https://programmers.co.kr/learn/courses/30/lessons/68935?language=javascript)
+
+### 제출한 답
+
+자연수 `n`을 [toString](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)을 사용 해 3진수로 바꿔주기
+
+3진수로 바뀐 숫자를 [split](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split)으로 잘라 배열로 만들기
+
+배열을 [reverse](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)로 뒤집은 후 [join](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/join)으로 합쳐주기
+
+여기까지 한 값을 [parseInt](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/parseInt)로 감싼 후 3진수로 바꿔주기
+
+```js
+function solution(n) {
+    return parseInt(
+        n
+        .toString(3)
+        .split('')
+        .reverse()
+        .join('')
+    , 3) ;
+}
+```

@@ -13,6 +13,7 @@ const ThumbnailCard = styled.div`
     padding: 10px;
     transition: transform .5s;
     background: #fff;
+    
     p {
         width: fit-content;
         max-width: 100%;
@@ -20,15 +21,14 @@ const ThumbnailCard = styled.div`
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
+        font-size: 25px;
+        font-weight: 600;
     }
     
-    border: 10px solid #1e2a3c;
-    
-    &:hover {
-        transform: scale(1.01);
+    svg {
+        width: 80%;
     }
 `
-
 
 const Thumbnail = ({posts}) => {
     const img = posts.frontmatter.image;
@@ -67,12 +67,13 @@ const Thumbnail = ({posts}) => {
     }
 
     return (
-        img
-            ? <GatsbyImage image={img.childImageSharp.gatsbyImageData} className="card-image" alt="card_thumbnail"/>
-            :
-            <ThumbnailCard>
+        img ? <GatsbyImage
+                image={img.childImageSharp.gatsbyImageData}
+                className="card-image"
+                alt="card_thumbnail"
+            />
+            : <ThumbnailCard>
                 {logo}
-                <p>{posts.frontmatter.title}</p>
             </ThumbnailCard>
     )
 }

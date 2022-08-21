@@ -101,9 +101,7 @@ export const query = graphql`
 export default PostTemplate;
 
 PostTemplate.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     date: PropTypes.string,
-    author: PropTypes.string,
-    image: PropTypes.object | undefined,
-    thumbnailType: PropTypes.string | undefined
+    author: PropTypes.string
 };

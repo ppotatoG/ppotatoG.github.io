@@ -58,15 +58,15 @@ const PostTemplateStyles = styled.section`
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     code {
-      color: rgb(191, 199, 213);
+      color: rgb(64, 63, 83);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #222;
+      background: #fbfcfd;
       padding: 2px;
     }
     pre {
-      color: rgb(191, 199, 213);
+      color: rgb(64, 63, 83);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #222;
+      background: #fbfcfd;
       padding: 15px;
       code {
         padding: 0;

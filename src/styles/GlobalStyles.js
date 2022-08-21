@@ -3,7 +3,7 @@ import "normalize.css"
 
 const GlobalStyles = createGlobalStyle`
 :root {
-  font-size: 16px;
+  font-size: 14px;
   --dark: #222;
   --grey: #7c7c7c;
   --highlight: #fa7481;

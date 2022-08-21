@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
@@ -34,17 +33,17 @@ const PostTemplateStyles = styled.section`
 `
 
 const PostTemplate = ({ data }) => {
-  const { title, date, author, image } = data.mdx.frontmatter
+  const { title, date, author } = data.mdx.frontmatter
   const { body } = data.mdx
 
   return (
     <Layout>
       <PostTemplateStyles>
-        <hr style={{ marginTop: 0 }} class="separator separator__large" />
+        <hr style={{ marginTop: 0 }} className="separator separator__large" />
         <Link className="btn" to="/">
           Back to all posts
         </Link>
-        <hr class="separator" />
+        <hr className="separator" />
         <h1>{title}</h1>
         <h2>
           <span>Written by {author}</span> & Posted on <span>{date}</span>
@@ -53,11 +52,11 @@ const PostTemplate = ({ data }) => {
         <div className="post__body">
           <MDXRenderer>{body}</MDXRenderer>
         </div>
-        <hr class="separator" />
+        <hr className="separator" />
         <h2>
           Posted on <span>{date}</span>
         </h2>
-        <hr class="separator separator__large" />
+        <hr className="separator separator__large" />
       </PostTemplateStyles>
     </Layout>
   )
@@ -89,6 +88,6 @@ PostTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string,
   author: PropTypes.string,
-  image: PropTypes.object,
-  thumbnailType: PropTypes.string
+  image: PropTypes.object | undefined,
+  thumbnailType: PropTypes.string | undefined
 }

@@ -1,9 +1,51 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import styled from "styled-components"
-import PropTypes from "prop-types"
+
+import {Link, graphql} from "gatsby";
+
+import {MDXProvider} from '@mdx-js/react';
+import {MDXRenderer} from 'gatsby-plugin-mdx'
+
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+import Layout from "../components/layout";
+import CodeBlock from './CodeBlock';
+
+const PostTemplate = ({data}) => {
+    const {title, date, author} = data.mdx.frontmatter;
+    const {body} = data.mdx;
+
+    return (
+        <Layout>
+            <PostTemplateStyles>
+                <hr style={{marginTop: 0}} className="separator separator__large"/>
+                <Link className="btn" to="/">
+                    Back to all posts
+                </Link>
+                <hr className="separator"/>
+                <h1>{title}</h1>
+                <h2>
+                    <span>Written by {author}</span> & Posted on <span>{date}</span>
+                </h2>
+
+                <div className="post__body">
+                    <MDXProvider
+                        components={{
+                            pre: CodeBlock,
+                        }}
+                    >
+                        <MDXRenderer>{body}</MDXRenderer>
+                    </MDXProvider>
+                </div>
+                <hr className="separator"/>
+                <h2>
+                    Posted on <span>{date}</span>
+                </h2>
+                <hr className="separator separator__large"/>
+            </PostTemplateStyles>
+        </Layout>
+    )
+};
 
 const PostTemplateStyles = styled.section`
   h1,
@@ -16,51 +58,25 @@ const PostTemplateStyles = styled.section`
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     code {
-      color: var(--dark);
+      color: rgb(191, 199, 213);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #f1f1f1;
+      background: #222;
       padding: 2px;
     }
     pre {
-      color: var(--dark);
+      color: rgb(191, 199, 213);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #f1f1f1;
+      background: #222;
       padding: 15px;
       code {
         padding: 0;
       }
+      overflow: auto;
   }
-`
-
-const PostTemplate = ({ data }) => {
-  const { title, date, author } = data.mdx.frontmatter
-  const { body } = data.mdx
-
-  return (
-    <Layout>
-      <PostTemplateStyles>
-        <hr style={{ marginTop: 0 }} className="separator separator__large" />
-        <Link className="btn" to="/">
-          Back to all posts
-        </Link>
-        <hr className="separator" />
-        <h1>{title}</h1>
-        <h2>
-          <span>Written by {author}</span> & Posted on <span>{date}</span>
-        </h2>
-
-        <div className="post__body">
-          <MDXRenderer>{body}</MDXRenderer>
-        </div>
-        <hr className="separator" />
-        <h2>
-          Posted on <span>{date}</span>
-        </h2>
-        <hr className="separator separator__large" />
-      </PostTemplateStyles>
-    </Layout>
-  )
-}
+  a {
+    color: #222;
+  }
+`;
 
 export const query = graphql`
   query getPost($slug: String!) {
@@ -80,14 +96,14 @@ export const query = graphql`
       body
     }
   }
-`
+`;
 
-export default PostTemplate
+export default PostTemplate;
 
 PostTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string,
-  author: PropTypes.string,
-  image: PropTypes.object | undefined,
-  thumbnailType: PropTypes.string | undefined
-}
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string,
+    author: PropTypes.string,
+    image: PropTypes.object | undefined,
+    thumbnailType: PropTypes.string | undefined
+};

@@ -63,7 +63,7 @@ main {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px 30px 0 30px;
+  padding: 30px;
 }
 
 hr {

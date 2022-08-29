@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
         <Header />
         <Burger open={open} setOpen={setOpen} />
         <SideMenu open={open} setOpen={setOpen} />
-        <main style={{ minHeight: "100vh" }}>{children}</main>
+        <main style={{ minHeight: "max-content" }}>{children}</main>
         <Footer />
         <CookieConsent
           location="bottom"

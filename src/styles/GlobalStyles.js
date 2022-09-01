@@ -3,14 +3,14 @@ import "normalize.css"
 
 const GlobalStyles = createGlobalStyle`
 :root {
-  font-size: 14px;
-  --dark: #222;
-  --grey: #7c7c7c;
-  --highlight: #fa7481;
+    font-size: 14px;
+    --dark: #222;
+    --grey: #7c7c7c;
+    --highlight: #fa7481;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 ul,
@@ -21,32 +21,32 @@ ol {
 }
 
 body {
-  color: var(--dark);
-  font-family: Heebo, Arial, Helvetica, 'Helvetica Neue', sans-serif;
-  padding: 2rem 1.5rem;
-  margin: 0;
-  padding: 150px 0 0 0;
-  font-size: 1.2rem;
-  line-height: 1.4;
+    color: var(--dark);
+    font-family: Heebo, Arial, Helvetica, 'Helvetica Neue', sans-serif;
+    padding: 2rem 1.5rem;
+    margin: 0;
+    padding: 150px 0 0 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
 
-  &::-webkit-scrollbar {
-      width: 12px;
-  }
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
 
-  &::-webkit-scrollbar-track {
-      background: var(--highlight);
-  }
+    &::-webkit-scrollbar-track {
+        background: var(--highlight);
+    }
 
-  &::-webkit-scrollbar-thumb {
-      background-color: var(--dark);
-      border-radius: 0px;
-  }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--dark);
+        border-radius: 0px;
+    }
 }
 
 .gatsby-resp-image-wrapper {
-  max-width: 800px!important;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+    max-width: 800px!important;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .btn {
@@ -57,27 +57,33 @@ body {
     letter-spacing: -0.5px;
     text-decoration: none;
     text-transform: capitalize;
-  }
+}
 
 main {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 30px;
 }
 
 hr {
-  &.separator {
-    height: 3px;
-    border: none;
-    background-color: #000;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    &.separator {
+        height: 3px;
+        border: none;
+        background-color: #000;
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
 
-    &.separator__large {
-      height: 6px;
+        &.separator__large {
+        height: 6px;
+        }
     }
-  }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-top: 100px;
+    }
 }
 `
 

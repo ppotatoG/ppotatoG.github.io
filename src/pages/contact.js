@@ -4,38 +4,6 @@ import {StaticImage} from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 
-const Area = styled.div`
-    h3 {
-        font-size: 1.8em;
-        margin:30px 0 10px;
-        &:nth-of-type(1) {
-            margin: 0 0 10px 0;
-        }
-    }
-`;
-const BadgeBox = styled.div`
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    height: fit-content;
-    img {
-        display: block;
-    }
-    & + & {
-        margin-top:10px;
-    }
-`;
-
-const Article = styled.article`
-    display: flex;
-    align-items: center;
-    gap: 20px;
-`;
-
-const Link = styled.a`
-    text-decoration: none;
-`;
-
 const ContactPage = () => {
     return (
         <>
@@ -127,5 +95,41 @@ const ContactPage = () => {
         </>
     )
 }
+
+const Area = styled.div`
+    h3 {
+        font-size: 1.8em;
+        margin:30px 0 10px;
+        &:nth-of-type(1) {
+            margin: 0 0 10px 0;
+        }
+    }
+`;
+
+const BadgeBox = styled.div`
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    height: fit-content;
+    img {
+        display: block;
+    }
+    & + & {
+        margin-top:10px;
+    }
+`;
+
+const Article = styled.article`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+`;
+
+const Link = styled.a`
+    text-decoration: none;
+`;
 
 export default ContactPage

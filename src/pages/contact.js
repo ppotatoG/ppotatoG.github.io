@@ -53,7 +53,7 @@ const ContactPage = () => {
                                 src="https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=GraphQL&logoColor=white"
                                 alt="GraphQL"/>
                         </BadgeBox>
-                        <h3>DVCS</h3>
+                        <h3>Tools</h3>
                         <BadgeBox>
                             <img
                                 src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"
@@ -62,7 +62,6 @@ const ContactPage = () => {
                                 src="https://img.shields.io/badge/GitLab-FC6D26?style=flat-square&logo=GitLab&logoColor=white"
                                 alt="GitLab"/>
                         </BadgeBox>
-                        <h3>IDE</h3>
                         <BadgeBox>
                             <img
                                 src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"

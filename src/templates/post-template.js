@@ -66,7 +66,7 @@ const PostTemplateStyles = styled.section`
     pre {
       color: rgb(64, 63, 83);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #fbfcfd;
+      background: #fbe9e9;
       padding: 15px;
       code {
         padding: 0;

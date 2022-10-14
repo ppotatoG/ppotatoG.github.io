@@ -80,6 +80,14 @@ hr {
     }
 }
 
+blockquote {
+    background: #fbe9e9;
+    border-left: 10px solid #fa7481;
+    margin: 1.5em 10px;
+    padding: 1em 10px .1em 10px;
+    quotes: "\\201C""\\201D""\\2018""\\2019";
+}
+
 @media (max-width: 767px) {
     body {
         padding-top: 100px;

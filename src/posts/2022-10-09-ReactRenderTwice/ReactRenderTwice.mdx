@@ -1,0 +1,32 @@
+---
+title:  "React render twice"
+date:   2022-10-09
+slug: ReactRenderTwice
+thumbnailType: react
+author: ppotatoG
+---
+
+> `React.StrictMode` 로 감싸져 있을 때 개발모드에서만 두번씩 호출 실제 프로덕트에는 정상적으로 작동
+
+### twice
+```js
+<React.StrictMode>
+    <div>
+        <ComponentOne />
+        <ComponentTwo />
+    </div>
+</React.StrictMode>
+```
+
+### once
+```js
+<div>
+    <ComponentOne />
+    <ComponentTwo />
+</div>
+```
+
+
+[https://ko.reactjs.org/docs/strict-mode.html](https://ko.reactjs.org/docs/strict-mode.htm)
+
+[https://all-dev-kang.tistory.com/entry/리액트-두번-렌더링-되는-이슈에-대하여FeatStrictMode](https://all-dev-kang.tistory.com/entry/리액트-두번-렌더링-되는-이슈에-대하여FeatStrictMode)

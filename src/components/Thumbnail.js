@@ -28,6 +28,31 @@ const ThumbnailCard = styled.div`
     svg {
         width: 80%;
     }
+    
+    .baekjoon {
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    
+    .react {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        height: 100%;
+        background: #20232a;
+        img {
+            width: 20%;
+        }
+        span {
+            color: #61dafb;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+    }
 `
 
 const Thumbnail = ({posts}) => {
@@ -59,7 +84,18 @@ const Thumbnail = ({posts}) => {
                 </svg>
                 break;
             case 'baekjoon' :
-                logo = '<img id="logo-header" src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" alt="Logo" data-retina="">'
+                logo =
+                    <div className="baekjoon">
+                        <img src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" alt="Logo" />
+                    </div>
+                break;
+
+            case 'react' :
+                logo =
+                    <div className="react">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="react"/>
+                        <span>React</span>
+                    </div>
                 break;
             default :
                 logo = '';

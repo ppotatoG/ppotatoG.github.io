@@ -13,11 +13,19 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 
-ul,
-ol {
+ul {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
 }
 
 body {

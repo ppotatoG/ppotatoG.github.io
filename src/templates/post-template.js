@@ -64,7 +64,7 @@ const PostTemplateStyles = styled.section`
       padding: 2px;
     }
     code {
-      background: #fbe9e9;
+      background: var(--highlight-pink);
       padding: 0.2em 0.4em;
       font-size: 85%;
       border-radius: 3px;
@@ -72,7 +72,7 @@ const PostTemplateStyles = styled.section`
     pre {
       color: rgb(64, 63, 83);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;
-      background: #fbe9e9;
+      background: var(--highlight-pink);
       padding: 15px;
       code {
         padding: 0;

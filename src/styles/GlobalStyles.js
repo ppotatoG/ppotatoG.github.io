@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --dark: #222;
     --grey: #7c7c7c;
     --highlight: #fa7481;
+    --highlight-pink: #fff6f7;
 }
 
 * {
@@ -92,7 +93,7 @@ hr {
 }
 
 blockquote {
-    background: #fbe9e9;
+    background: var(--highlight-pink);
     border-left: 10px solid #fa7481;
     margin: 1.5em 10px;
     padding: 1em 10px .1em 10px;

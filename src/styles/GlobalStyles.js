@@ -26,6 +26,9 @@ ol {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+    li {
+       margin: .4em;
+    }
 }
 
 body {

@@ -63,6 +63,12 @@ const PostTemplateStyles = styled.section`
       background: #fbfcfd;
       padding: 2px;
     }
+    code {
+      background: #fbe9e9;
+      padding: 0.2em 0.4em;
+      font-size: 85%;
+      border-radius: 3px;
+    }
     pre {
       color: rgb(64, 63, 83);
       font-family: Heebo,Arial,Helvetica,'Helvetica Neue',sans-serif;

@@ -1,0 +1,149 @@
+---
+title:  "Angular 시작하기"
+date:   2022-12-07
+slug: angular-start
+thumbnailType: angular
+author: ppotatoG
+---
+[Angular 시작하기](https://angular.kr/start)
+
+[angular-nf7xsq](https://github.com/ppotatoG/angular-nf7xsq)
+
+## 상품 목록 생성하기
+
+### for of
+
+```html
+<div *ngFor="let product of products"></div>
+```
+
+### 변수 사용
+
+```html
+// [title]="product.name + 'details'"
+// {{ product.name }}
+
+<a [title]="product.name + 'details'">
+    {{ product.name }}
+</a>
+```
+
+### click event
+
+```html
+<button type="button" (click)="share()">Share</button>
+```
+
+### if
+
+```html
+<p *ngIf="product.description">Description: {{ product.description }}</p>
+```
+
+---
+
+## 자식 컴포넌트로 데이터 전달하기
+
+### 컴포넌트 생성
+
+```
+ng generate component product-alerts
+ng generate component {{ component name }}
+```
+
+### 컴포넌트 기본 구조
+
+```ts
+@Component({
+    selector: 'app-product-alerts',
+    templateUrl: './product-alerts.component.html',
+    styleUrls: ['./product-alerts.component.css']
+})
+```
+
+#### selector
+html tag 로 사용됨
+
+`<app-product-alerts></app-product-alerts>`
+
+#### templateUrl
+본 컴포넌트에서 사용될 HTML
+
+#### styleUrls
+본 컴포넌트에서 사용될 css
+
+### 데이터 전달하기 (부모 => 자식)
+`@Input` 부모 컴포넌트에서 전달될거임 명시
+
+`product` prop 이름 및 type 지정
+
+```ts
+// src/app/product-alerts/product-alerts.component.ts
+export class ProductAlertsComponent {
+    @Input() product: Product | undefined;
+}
+```
+
+```html
+<!-- src/app/product-list/product-list.component.html -->
+<app-product-alerts [product]="product"></app-product-alerts>
+```
+
+---
+
+## 부모 컴포넌트로 데이터 전달하기
+
+### 데이터 전달하기 (자식 => 부모)
+`@Output` 부모 컴포넌트한테 전달될거임 명시
+
+`product` prop 이름 및 type 지정
+
+```ts
+// src/app/product-alerts/product-alerts.component.ts
+export class ProductAlertsComponent {
+    @Output() notify = new EventEmitter();
+}
+```
+
+### new EventEmitter()
+
+`emit` '발산, 방출하다.'
+
+eventListener 느낌?
+
+### 매서드 실행
+`(click)="notify.emit()`
+```html
+<!-- src/app/product-alerts/product-alerts.component.html -->
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>
+```
+
+### 실행될 함수
+```ts
+// src/app/product-list/product-list.component.ts
+export class ProductListComponent {
+
+    products = products;
+
+    share() {
+        window.alert('The product has been shared!');
+    }
+
+    onNotify() {
+        window.alert('You will be notified when the product goes on sale');
+    }
+}
+```
+
+### 연결
+
+```html
+<!-- src/app/product-list/product-list.component.html -->
+<app-product-alerts
+    [product]="product"
+    (notify)="onNotify()"
+>
+</app-product-alerts>
+```

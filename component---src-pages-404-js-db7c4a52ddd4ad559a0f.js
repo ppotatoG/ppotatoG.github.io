@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkkoop_blog=self.webpackChunkkoop_blog||[]).push([[883],{429:function(e,t,n){n.r(t);var a=n(7294),l=n(1597);t.default=function(){return a.createElement(a.Fragment,null,a.createElement("h1",null,"This page has disappeared"),a.createElement(l.rU,{className:"btn",to:"/"},"Return Home"))}}}]);
-//# sourceMappingURL=component---src-pages-404-js-db7c4a52ddd4ad559a0f.js.map

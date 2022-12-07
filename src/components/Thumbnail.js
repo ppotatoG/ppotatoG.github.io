@@ -10,7 +10,6 @@ const ThumbnailCard = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-    padding: 10px;
     transition: transform .5s;
     background: #fff;
     
@@ -53,6 +52,15 @@ const ThumbnailCard = styled.div`
             font-weight: bold;
         }
     }
+  
+  .angular {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #303030;
+  }
 `
 
 const Thumbnail = ({posts}) => {
@@ -95,6 +103,12 @@ const Thumbnail = ({posts}) => {
                     <div className="react">
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="react"/>
                         <span>React</span>
+                    </div>
+                break;
+            case 'angular' :
+                logo =
+                    <div className="angular">
+                        <img src="https://angular.kr/assets/images/logos/angular/logo-nav@2x.png" width="150" height="40" title="Home" alt="Home" className="ng-star-inserted" />
                     </div>
                 break;
             default :

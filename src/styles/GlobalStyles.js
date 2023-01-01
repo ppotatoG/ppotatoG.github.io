@@ -24,8 +24,8 @@ ol {
     list-style-type: decimal;
     margin-block-start: 1em;
     margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
     padding-inline-start: 40px;
     li {
        margin: .4em;
@@ -35,7 +35,6 @@ ol {
 body {
     color: var(--dark);
     font-family: Heebo, Arial, Helvetica, 'Helvetica Neue', sans-serif;
-    padding: 2rem 1.5rem;
     margin: 0;
     padding: 150px 0 0 0;
     font-size: 1.2rem;
@@ -51,7 +50,7 @@ body {
 
     &::-webkit-scrollbar-thumb {
         background-color: var(--dark);
-        border-radius: 0px;
+        border-radius: 0;
     }
 }
 
@@ -59,6 +58,7 @@ body {
     max-width: 800px!important;
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
+    margin-left: 0 !important;
 }
 
 .btn {

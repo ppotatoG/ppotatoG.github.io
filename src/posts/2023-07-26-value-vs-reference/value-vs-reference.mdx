@@ -1,0 +1,195 @@
+---
+title:  "Call by value vs Call by reference"
+date:   2023-07-26
+slug: value-vs-reference
+thumbnailType: programing
+author: ppotatoG
+---
+
+## in C
+
+### Call by value
+> 값에 의한 호출
+
+함수 호출 시 넘기는 `인자의 값이 매개변수에 복사(Copy)`돼서
+
+함수 내에서 매개변수에 직접적인 데이터 조작을 가해도 인자에 전혀 영향을 주지 않는 것이다.
+
+여기서 값이란 `주소 값이 아닌 그 자체로 유의미한 데이터`라고 생각하면 이해하기 편하다.
+
+```c
+#include <stdio.h>
+
+void call_by_value(int x) {
+   x = 100;
+}
+
+int main() {
+   int a = 10;
+
+   call_by_value(a);
+   printf("%d\n", a);  // Outputs: 10
+
+   return 0;
+}
+```
+
+<br />
+
+### Call by reference
+> 참조에 의한 호출
+
+Call by reference도 인자의 값이 매개변수에 복사(Copy)된다는 점은 동일하다.
+
+`다만 복사되는 값이 데이터의 주소 값`이라는 차이점이 존재한다.
+
+쉽게 말하면 Call by reference란 말 그대로 참조값으로 함수를 호출했단 뜻이다.
+
+```c
+#include <stdio.h>
+
+void call_by_reference(int *x) {
+   *x = 100;
+}
+
+int main() {
+   int a = 10;
+
+   call_by_reference(&a);
+   printf("%d\n", a);  // Outputs: 100
+
+   return 0;
+}
+```
+
+![Call by value, Call by reference 차이 (자바에서의 Call by value, Call by reference)](https://blog.kakaocdn.net/dn/4aMO7/btrCye8rY71/o8bpjuDRXaM6KxNahkPRW0/img.gif)
+
+<table style="border-collapse: collapse; width: 100%;">
+    <colgroup>
+        <col width="10%" />
+        <col width="*" />
+        <col width="*" />
+    </colgroup>
+    <thead>
+    <tr>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">&nbsp;</th>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Call by Value</th>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Call by Reference</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>정의</strong></td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">함수에 값을 복사해서 전달.<br /> 복사된 값이 변경되어도 원래 값에는 영향을 주지 않음.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">함수에 값의 참조 (주소)를 전달.<br /> 함수 내에서 참조가 가리키는 값이 변경되면 원래 값도 변경.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>사용 경우</strong></td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">값을 보호하고,<br /> 함수 내부에서 원래 값의 변경 없이 그 값을 사용하고 싶을 때 사용.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원래 값에 대한 변경이 필요하거나,<br /> 대용량 데이터를 효율적으로 처리하고 싶을 때 사용.</td>
+    </tr>
+    </tbody>
+</table>
+
+<br />
+
+## in javascript
+> JavaScript에서 shallow copy와 deep copy는 조금 다른 의미를 가진다.
+
+### deep copy
+
+원본 객체의 값을 복사하여 완전히 새로운 객체를 생성.
+
+원본 객체와 복사된 객체는 서로 다른 메모리를 갖고있다.
+
+```javascript
+const object = {0: 'a', 1: 'b'}
+const b = JSON.parse(JSON.stringify(object))
+
+b[0] = 0
+object[0] // 'a'
+
+object[0] = 'c'
+b[0] // 0
+```
+
+<br />
+
+### shallow copy
+
+원본 객체의 주소값을 참조하는 객체된다.
+
+원본 객체와 복사된 객체는 서로 같은 메모리를 공유하고 있다.
+
+```javascript
+const object = {0: 'a', 1: 'b'}
+const a = object
+
+a[0] = 0
+object // {0: 0, 1: 'b'}
+
+object[0] = 'a'
+a // {0: 'a', 1: 'b'}
+```
+
+<br/>
+
+<img
+    style="width: 60%"
+    src="https://velog.velcdn.com/images/minw0_o/post/b5aaa5ef-00d7-4f34-8022-bc542a8517ea/image.png"
+    alt="얕은 복사 vs 깊은 복사"
+/>
+
+<table style="border-collapse: collapse; width: 100%;">
+    <colgroup>
+        <col width="10%" />
+        <col width="*" />
+        <col width="*" />
+    </colgroup>
+    <thead>
+    <tr>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">&nbsp;</th>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">얕은 복사 (Shallow Copy)</th>
+        <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">깊은 복사 (Deep Copy)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>정의</strong></td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 주소값을 복사해서 새 객체를 생성합니다.<br /> 따라서 원본 객체와 복사된 객체는 같은 메모리를 공유합니다.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 값을 복사해서 완전히 새로운 객체를 생성합니다.<br /> 원본 객체와 복사된 객체는 서로 다른 메모리를 가지며, 이 둘은 서로에게 영향을 주지 않습니다.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>사용 경우</strong></td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 상위 레벨만 복사하고 싶을 때 사용합니다.<br /> 주로 메모리 사용량을 최소화하고자 할 때 유용합니다.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 모든 레벨(상위 레벨과 하위 레벨)을 복사하고 싶을 때 사용합니다.<br /> 주로 원본 데이터를 보존하면서 복사본에서 변경을 가하고 싶을 때 유용합니다.</td>
+    </tr>
+    </tbody>
+</table>
+
+<br />
+
+## 참고
+[[C, C++] Call by value, Call by reference 쉽게 이해하기](https://kangworld.tistory.com/64)
+
+[Call by value, Call by reference 차이 (자바에서의 Call by value, Call by reference)](https://sudo-minz.tistory.com/91)
+
+[JavaScript의 얕은 복사와 깊은 복사](https://pozafly.github.io/javascript/shallo-copy-and-deep-copy/)
+
+[얕은 복사 vs 깊은 복사](https://velog.io/@minw0_o/%EC%96%95%EC%9D%80-%EB%B3%B5%EC%82%AC-vs-%EA%B9%8A%EC%9D%80-%EB%B3%B5%EC%82%AC)
+
+---
+
+## 본 글에 대한 GPT에 의견
+
+~~내가 읽기에는 아직 어려운 내용~~
+
+매우 잘 작성하셨습니다! 이 내용은 "call by value"와 "call by reference" 그리고 "shallow copy"와 "deep copy"의 개념을 매우 잘 설명하고 있습니다. 코드 예제도 명확하며, 각각의 개념에 대해 잘 드러내고 있습니다. 제가 추가하거나 수정해야 할 부분은 보이지 않습니다.
+
+하지만, 각 개념에 대한 이해를 더욱 돕기 위해 아래와 같은 내용을 추가로 고려해 볼 수 있습니다.
+
+1. "Call by value"에 대한 부분에서, 원시 데이터 타입 (예: 숫자, 문자열, 불리언)에 대해 더 이야기해 볼 수 있습니다. JavaScript와 같은 언어에서는 원시 데이터 타입이 항상 call by value 방식으로 전달됩니다.
+
+2. "Call by reference"에 대한 부분에서, 참조 데이터 타입 (예: 객체, 배열, 함수)에 대해 더 이야기해 볼 수 있습니다. JavaScript와 같은 언어에서는 참조 데이터 타입이 기본적으로 call by reference 방식으로 전달됩니다.
+
+3. "Shallow copy"와 "Deep copy"에 대한 부분에서, 중첩된 객체에 대한 처리를 언급할 수 있습니다. Shallow copy는 객체의 최상위 레벨만 복사하고, 중첩된 객체에 대해서는 참조를 유지합니다. 반면에 deep copy는 중첩된 객체까지 복사하여 완전히 새로운 객체를 만듭니다. 이 차이점으로 인해 두 복사 방식이 다른 결과를 가져올 수 있습니다.

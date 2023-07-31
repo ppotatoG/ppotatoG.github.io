@@ -13,7 +13,7 @@ author: ppotatoG
 
 함수 호출 시 넘기는 `인자의 값이 매개변수에 복사(Copy)`돼서
 
-함수 내에서 매개변수에 직접적인 데이터 조작을 가해도 인자에 전혀 영향을 주지 않는 것이다.
+함수 내에서 매개변수에 직접적인 데이터 조작을 가해도 인자에 전혀 영향을 주지 않는 것.
 
 여기서 값이란 `주소 값이 아닌 그 자체로 유의미한 데이터`라고 생각하면 이해하기 편하다.
 
@@ -41,7 +41,7 @@ int main() {
 
 Call by reference도 인자의 값이 매개변수에 복사(Copy)된다는 점은 동일하다.
 
-`다만 복사되는 값이 데이터의 주소 값`이라는 차이점이 존재한다.
+다만 `복사되는 값이 데이터의 주소 값`이라는 차이점이 존재한다.
 
 쉽게 말하면 Call by reference란 말 그대로 참조값으로 함수를 호출했단 뜻이다.
 
@@ -156,13 +156,13 @@ a // {0: 'a', 1: 'b'}
     <tbody>
     <tr>
         <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>정의</strong></td>
-        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 주소값을 복사해서 새 객체를 생성합니다.<br /> 따라서 원본 객체와 복사된 객체는 같은 메모리를 공유합니다.</td>
-        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 값을 복사해서 완전히 새로운 객체를 생성합니다.<br /> 원본 객체와 복사된 객체는 서로 다른 메모리를 가지며, 이 둘은 서로에게 영향을 주지 않습니다.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 주소값을 복사해서 새 객체를 생성.<br /> 따라서 원본 객체와 복사된 객체는 같은 메모리를 공유.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">원본 객체의 값을 복사해서 완전히 새로운 객체를 생성.<br /> 원본 객체와 복사된 객체는 서로 다른 메모리를 가지며, 이 둘은 서로에게 영향을 주지 않음.</td>
     </tr>
     <tr>
         <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;"><strong>사용 경우</strong></td>
-        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 상위 레벨만 복사하고 싶을 때 사용합니다.<br /> 주로 메모리 사용량을 최소화하고자 할 때 유용합니다.</td>
-        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 모든 레벨(상위 레벨과 하위 레벨)을 복사하고 싶을 때 사용합니다.<br /> 주로 원본 데이터를 보존하면서 복사본에서 변경을 가하고 싶을 때 유용합니다.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 상위 레벨만 복사하고 싶을 때 사용.<br /> 주로 메모리 사용량을 최소화하고자 할 때 유용.</td>
+        <td style="border: 1px solid #dddddd; padding: 8px; text-align: left;">객체의 모든 레벨(상위 레벨과 하위 레벨)을 복사하고 싶을 때 사용.<br /> 주로 원본 데이터를 보존하면서 복사본에서 변경을 가하고 싶을 때 유용.</td>
     </tr>
     </tbody>
 </table>
@@ -188,8 +188,8 @@ a // {0: 'a', 1: 'b'}
 
 하지만, 각 개념에 대한 이해를 더욱 돕기 위해 아래와 같은 내용을 추가로 고려해 볼 수 있습니다.
 
-1. "Call by value"에 대한 부분에서, 원시 데이터 타입 (예: 숫자, 문자열, 불리언)에 대해 더 이야기해 볼 수 있습니다. JavaScript와 같은 언어에서는 원시 데이터 타입이 항상 call by value 방식으로 전달됩니다.
+1. "Call by value"에 대한 부분에서, `원시 데이터 타입 (예: 숫자, 문자열, 불리언)`에 대해 더 이야기해 볼 수 있습니다. <br />**JavaScript와 같은 언어에서는 원시 데이터 타입이 항상 call by value 방식으로 전달**됩니다.
 
-2. "Call by reference"에 대한 부분에서, 참조 데이터 타입 (예: 객체, 배열, 함수)에 대해 더 이야기해 볼 수 있습니다. JavaScript와 같은 언어에서는 참조 데이터 타입이 기본적으로 call by reference 방식으로 전달됩니다.
+2. "Call by reference"에 대한 부분에서, `참조 데이터 타입 (예: 객체, 배열, 함수)`에 대해 더 이야기해 볼 수 있습니다. <br />**JavaScript와 같은 언어에서는 참조 데이터 타입이 기본적으로 call by reference 방식으로 전달**됩니다.
 
-3. "Shallow copy"와 "Deep copy"에 대한 부분에서, 중첩된 객체에 대한 처리를 언급할 수 있습니다. Shallow copy는 객체의 최상위 레벨만 복사하고, 중첩된 객체에 대해서는 참조를 유지합니다. 반면에 deep copy는 중첩된 객체까지 복사하여 완전히 새로운 객체를 만듭니다. 이 차이점으로 인해 두 복사 방식이 다른 결과를 가져올 수 있습니다.
+3. "Shallow copy"와 "Deep copy"에 대한 부분에서, `중첩된 객체에 대한 처리`를 언급할 수 있습니다. <br />**Shallow copy는 객체의 최상위 레벨만 복사**하고, 중첩된 객체에 대해서는 참조를 유지합니다. <br />반면에 **deep copy는 중첩된 객체까지 복사하여 완전히 새로운 객체**를 만듭니다. <br />이 차이점으로 인해 두 복사 방식이 다른 결과를 가져올 수 있습니다.

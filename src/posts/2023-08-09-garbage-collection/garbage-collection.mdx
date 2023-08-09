@@ -1,0 +1,153 @@
+---
+title: "Garbage Collection"
+date: 2023-08-09
+slug: garbage-collection
+thumbnailType: programing
+author: ppotatoG
+---
+
+> 자바스크립트는 객체가 생성되었을 때 자동으로 메모리를 할당하고 더 이상 필요하지 않을 때 자동으로 해제 합니다
+
+## 메모리 생존 주기
+
+### 1. 할당
+<img
+    width="60%"
+    src="https://fe-developers.kakaoent.com/static/19dfc250b40a79b5defd6af2c7203928/78612/memory.png"
+    alt="Allocation"
+/>
+
+프로그래머가 메모리 할당을 신경을 쓸 필요가 없도록, 자바스크립트는 값을 선언할 때 자동으로 메모리를 할당.
+
+```js
+const a = 10; // primitive 타입은 메모리 스택 영역에 저장
+const b = [1, 2, 3]; // 배열, 함수, 객체는 힙 영역에 저장
+```
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <colgroup>
+        <col width="*" />
+        <col width="15%" />
+        <col width="*" />
+    </colgroup>
+    <thead>
+    <tr>
+        <th>데이터 타입</th>
+        <th style="text-align:center">저장 영역</th>
+        <th>설명</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Primitive Types<br/> (Number, String, Boolean, Undefined, Null, Symbol, BigInt)</td>
+        <td style="text-align:center">메모리 스택 영역</td>
+        <td>값이 직접 저장되며, 크기가 고정되어 있어 빠른 접근이 가능.</td>
+    </tr>
+    <tr>
+        <td>Object Types<br/> (Objects, Arrays, Functions)</td>
+        <td style="text-align:center">메모리 힙 영역</td>
+        <td>크기가 동적으로 변하며, 스택 영역에는 참조값이 저장.</td>
+    </tr>
+    </tbody>
+</table>
+
+### 2. 사용
+변수에 저장된 값을 읽어 들이거나, 함수를 호출하는 등의 작업을 수행.
+
+### 3. 해제
+더 이상 필요하지 않은 변수는 메모리에서 해제된다.
+
+가비지 컬렉터에 의해 더 이상 참조되지 않는 객체는 메모리에서 제거.
+
+
+#### 메모리 누수
+위의 생존 주기에서, **해제 단계**가 제대로 이루어지지 않으면 메모리 누수가 발생할 수 있다.
+
+메모리 누수는 다음과 같은 상황에서 발생할 수 있다.
+- 전역 변수를 과도하게 사용하거나 더 이상 필요하지 않는 객체에 대한 참조를 유지하는 경우.
+- 클로저에서 필요하지 않은 외부 변수에 대한 참조를 유지하는 경우.
+- DOM 참조가 제거된 후에도 JavaScript에서 참조가 남아있는 경우.
+
+## 가비지 컬렉터(GC)
+JavaScript 엔진은 필요하지 않은 객체를 식별하고 메모리를 해제하는 가비지 컬렉터를 내장하고 있다.
+
+### 1. 참조-세기(Reference-counting) 알고리즘
+> 참고: 최신 브라우저는 더 이상 참조-세기 가비지 콜렉션 방식을 사용하지 않습니다.
+
+가장 단순하게 구현된 알고리즘으로 '어떤 다른 오브젝트도 참조하지 않는 오브젝트'를 '더 이상 필요 없는 오브젝트'라고 판단.
+
+두 객체가 서로를 참조하는 순환 구조의 경우, 참조-세기 알고리즘은 객체가 더 이상 필요하지 않더라도 가비지 컬렉션의 대상으로 삼지 않는다.
+
+이러한 순환 참조는 스코프를 벗어나면 메모리가 회수되어야 하지만, 참조-세기 알고리즘이 이를 처리하지 못해 메모리 누수의 원인이 된다.
+
+**순환 참조 구조 예시**
+```js
+function createCircularReference() {
+  const objectA = {};
+  const objectB = {};
+
+  // 두 객체가 서로를 참조하도록 설정
+  objectA.reference = objectB;
+  objectB.reference = objectA;
+}
+
+createCircularReference();
+// 이 시점에서 objectA와 objectB는 스코프를 벗어나지만,
+// 서로를 참조하고 있으므로 참조-세기 알고리즘을 사용하는 가비지 컬렉터에 의해 회수되지 않음
+```
+
+### 2. 표시하고-쓸기(Mark-and-sweep) 알고리즘
+모든 루트로부터 시작하여 도달 가능한 객체들을 마킹하고, 그 외 객체들은 스위핑(삭제)하여 메모리를 해제.
+
+<img
+    width="60%"
+    src="https://velog.velcdn.com/images/leehyunho2001/post/f48470fb-3d3f-4f63-96e7-9e3bfc8c569a/image.png"
+    alt="mark-and-sweep"
+/>
+
+Mark-and-sweep 알고리즘은 루트 정보를 수집하고 마킹하며, 루트로부터 도달 가능한 모든 객체를 마크하는 과정을 반복한다.
+
+이로 인해 순환 참조 문제가 해결되고, 해당 객체들이 가비지 컬렉션(GC)에 수집된다.
+
+중요한 것은 객체가 단순히 참조되었다고 해서 도달 가능한 것이 아니라 루트로부터 직접적으로 도달할 수 있어야 한다는 점이다.
+
+또한, 가비지 컬렉션은 자동으로 실행되므로 개발자가 직접 제어할 수 없으며, 이를 자바스크립트에서 GC의 한계라고 표현하고 있다.
+
+> [모던 자바스크립트 튜토리얼](https://ko.javascript.info/garbage-collection)을 보면 자바스크립트 엔진은 실행에 영향을 미치지 않으면서 GC 성능을 증가시키기 위한 최적화 기법을 사용한다고 한다. (generational collection, incremental collection, idle-time collection)
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <colgroup>
+        <col width="15%" />
+        <col width="*" />
+        <col width="*" />
+    </colgroup>
+    <thead>
+    <tr>
+        <th style="text-align:center">알고리즘</th>
+        <th style="text-align:center">특징</th>
+        <th style="text-align:center">장단점</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align:center">참조-세기<br />(Reference-counting)</td>
+        <td>어떤 다른 오브젝트도 참조하지 않는 오브젝트를<br />'더 이상 필요 없는 오브젝트'로 판단</td>
+        <td>구현이 단순하나 순환 참조로 인해 메모리 누수가 발생할 수 있음</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">표시하고-쓸기<br />(Mark-and-sweep)</td>
+        <td>모든 루트로부터 시작하여 도달 가능한 객체들을 마킹하고,<br />그 외 객체들은 스위핑하여 메모리 해제</td>
+        <td>순환 참조 문제 해결, 객체가 단순히 참조되었다고 해서 도달 가능한 것이 아닌<br />루트로부터 직접적으로 도달할 수 있어야 함</td>
+    </tr>
+    </tbody>
+</table>
+
+## 참고
+
+[자바스크립트의 메모리 관리](https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management)
+
+[자바스크립트 v8 엔진의 가비지 컬렉션 동작 방식](https://fe-developers.kakaoent.com/2022/220519-garbage-collection/)
+
+[가비지 컬렉션 모르시는분~!!](https://velog.io/@leehyunho2001/%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BB%AC%EB%A0%89%EC%85%98-%EB%AA%A8%EB%A5%B4%EC%8B%9C%EB%8A%94%EB%B6%84)
+
+[Primitive Type(원시 타입) vs Reference Type (참조 타입)](https://velog.io/@surim014/JavaScript-Primitive-Type-vs-Reference-Type)

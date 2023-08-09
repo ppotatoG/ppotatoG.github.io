@@ -83,6 +83,11 @@ const PostTemplateStyles = styled.section`
       color: #222;
     }
 
+    ul {
+      list-style: disc;
+      padding-left: 30px;
+    }
+
     @media (max-width: 768px) {
       img {
         width: 100%;
